@@ -4,9 +4,10 @@ if not status_ok then
 end
 
 local luasnip = require("luasnip")
+require("mason").setup()
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities();
-local servers = { "tsserver", "gopls", "lua_ls" };
+local servers = { "tsserver", "gopls", "lua_ls", "emmet_language_server" };
 
 for _, lsp in ipairs(servers) do
   if lsp == "lua_ls" then

@@ -1,0 +1,69 @@
+#|
+(deflayer name
+  _    _    _    _    _    _                       _    _    _    _    _    _
+  _    _    _    _    _    _                       _    _    _    _    _    _
+  _    _    _    _    _    _                       _    _    _    _    _    _
+  _    _    _    _    _    _                       _    _    _    _    _    _
+  _    _    _    _    _                                 _    _    _    _    _
+                                _    _        _    _
+                           _    _    _        _    _    _
+                                     _        _
+)
+|#
+
+(defcfg
+  input (device-file "/dev/input/by-id/usb-https:__github.com_stapelberg_kinT__kint41_-event-kbd")
+  output (uinput-sink
+          "sleep 1")
+  fallthrough true)
+
+
+(defalias
+  ;; shift when held, paren when tapped
+  lpr (tap-hold-next 200 \( lsft)
+  rpr (tap-hold-next 200 \) rsft)
+
+  ;; control when held, escape when tapped
+  ces (tap-hold-next-release 200 esc lctl)
+  rct (tap-hold-next 200 ret rctl)
+
+  ;; home row mods
+
+  sym (tap-hold-next-release 200 esc (layer-toggle prog-syms))
+
+)
+
+
+(deflayer base
+  _    _    _    _    _    _                            _    _    _    _    _    _
+  _    _    _    _    _    _                            _    _    _    _    _    _
+  @sym _    _    _    _    _                            _    _    _    _    _    _
+  _    _    _    _    _    _                            _    _    _    _    _    _
+       _    _    _    _                                      _    _    _    _
+                                @ces _        _    @ces 
+                           _    _    _        _    _    _
+                                     _        _
+)
+
+(deflayer prog-syms
+  _    _    _    _    _    _                       _    _    _    _    _    _
+  _    !    @    #    $    %                       =    `    :    ;    +    _
+  _    lmet lalt lsft lctl ^                       *    \(   {    [    -    _
+  _    _    _    \    |    &                       ~    \)   }    ]    \_   _
+       _    _    _    _                                 _    _    _    _    
+                                _    _        _    _
+                           _    tab  _        _    _    _
+                                     _        _
+)
+
+
+(defsrc
+  =    1    2    3    4    5                       6    7    8    9    0    -
+  tab  q    w    e    r    t                       y    u    i    o    p    \
+  caps a    s    d    f    g                       h    j    k    l    ;    '
+  lsft z    x    c    v    b                       n    m    ,    .    /    rsft
+       grv  ins  left rght                              up   down [    ]    
+                                lctl lalt     ralt rctl
+                           bspc del  lmet     rmet ret  spc
+                                     lsft     rsft
+)

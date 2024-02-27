@@ -1,0 +1,33 @@
+source /etc/profile
+
+
+# env variables
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_RUNTIME_DIR="/run/user/$UID"
+export XDG_SESSION_TYPE=X11
+
+export PAGER=less
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export INPUTRC="$XDG_CONFIG_HOME/bash/inputrc"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+export SAVEHIST=25000
+export HISTSIZE=25000
+export HISTCONTROL=ignorespace
+export NIXPKGS_ALLOW_UNFREE=1
+export NIXPKGS_ALLOW_INSECURE=1 # for obsidian/electron *womp womp*
+
+export PS1="\[\e[33m\]\u\[\e[0m\]@\[\e[34m\]\h\[\e[0m\]:\[\e[35m\]\w\[\e[0m\]\n$ "
+
+
+export PATH="$PATH:$HOME/.local/bin/"
+
+alias ls='ls --color=auto'
+
+
+# misc setup
+
+eval "$(fnm env --use-on-cd)"

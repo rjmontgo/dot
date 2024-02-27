@@ -1,5 +1,5 @@
-local colorscheme = "kanagawa";
-local status_ok, _ = pcall(require, "kanagawa");
+local colorscheme = "gruvbox";
+local status_ok, _ = pcall(require, "gruvbox");
 
 if not status_ok then
   vim.notify("[after/01-colorscheme.lua] Could not require colorscheme " .. colorscheme);

@@ -15,47 +15,21 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   'rebelot/kanagawa.nvim',
-  'ixru/nvim-markdown',
-
+  'ellisonleao/gruvbox.nvim',
+  'williamboman/mason.nvim',
+  'olrtg/nvim-emmet',
   'jose-elias-alvarez/null-ls.nvim',
 
   'L3MON4D3/LuaSnip',
 
   'nvim-treesitter/nvim-treesitter',
   'nvim-treesitter/playground',
-  'nvim-treesitter/nvim-treesitter-context',
 
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
 
   'tpope/vim-fugitive',
-  {
-    'nvim-orgmode/orgmode',
-    dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', lazy = true },
-    },
-    event = 'VeryLazy',
-    config = function()
-      -- Load treesitter grammar for org
-      require('orgmode').setup_ts_grammar()
-
-      -- Setup treesitter
-      require('nvim-treesitter.configs').setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { 'org' },
-        },
-        ensure_installed = { 'org' },
-      })
-
-      -- Setup orgmode
-      require('orgmode').setup({
-        org_agenda_files = '~/orgfiles/**/*',
-        org_default_notes_file = '~/orgfiles/refile.org',
-      })
-    end,
-  },
   {
     "michaelb/sniprun",
     branch = "master",
